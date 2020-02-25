@@ -2,8 +2,14 @@ TODO:
 * prettify unread list
 	- with links
 	- time since 
+		+ add function to compute time ago
 * add settings:
 	- update intervals (or disable auto check)
 * more accurate tooltips
 	- lastUpdate specifically
  
+ 
+ 
+### debugging related
+* add a setting / variable for debug mode
+	- add various messages (and edit current ones) to show only when debug flag is up
