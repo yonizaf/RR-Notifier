@@ -7,7 +7,11 @@ function createRow(listItem){
 	//document.getElementById("unread-list").append(row);
 }
 
-document.getElementById("check-now").addEventListener("click",function(){reloadResults()} );
+var page = browser.extension.getBackgroundPage();
+
+document.getElementById("version-info").textContent = browser.runtime.getManifest().version;
+
+document.getElementById("check-now").addEventListener("click",function(){page.reloadResults()} );
 document.getElementById("set-updated").addEventListener("click",function(){
 	browser.storage.local.get("lastCheck").then(result => {
 	browser.storage.sync.set({lastUpdated:result.lastCheck})

@@ -1,12 +1,19 @@
 body{
 	background-color:#505050;
 	color:#eee;
+	font-family:"segoe ui";
+	font-size:12px;
+	margin:0;
+	user-select: none;
+}
+header{
+	font-size:10px;
+	background: linear-gradient(0deg, #333 20%, rgba(0,0,0,0) 100%);
+	padding:1px;
 }
 #menu-content{
 	min-width:100px;
-	min-height:50px;
-	font-family:"segoe ui";
-	font-size:12px;
+	padding:2px;
 }
 .button{
 	text-align:center;
@@ -14,6 +21,18 @@ body{
 	margin:4px 1px;
 	background-color:#333;
 	cursor:pointer;
+}
+#unread-list{
+	min-height:30px;
+}
+.when-empty{
+	display:none;
+	text-align:center;
+	color:#888;
+	padding:7px;
+}
+.when-empty:last-child{
+	display:block;
 }
 #unread-list>.button{
 	font-size:0.8em
