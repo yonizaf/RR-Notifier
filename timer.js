@@ -6,7 +6,7 @@ class Timer {
 	}
 	loop(){
 		if (console && console.info) console.info("Timer Loop! Timer id is "+this.timerId+".\n Time: "+new Date());
-		reloadResults();
+		reloadResults(true);
 		this.timerId = setTimeout(()=>{this.loop()},this.settings.interval)
 	}
 	run(initialRun){

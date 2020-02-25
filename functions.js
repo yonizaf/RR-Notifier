@@ -18,7 +18,7 @@ function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function reloadResults(){
+async function reloadResults(fromTimer){
 	var lastUpdated;
 	
 	browser.browserAction.setBadgeText({text: ""})
@@ -53,6 +53,6 @@ async function reloadResults(){
 			browser.browserAction.setIcon({path: "/icons/icon-32.png"})
 			browser.browserAction.setBadgeBackgroundColor({color:"gold"})
 			browser.browserAction.setBadgeText({text: unread.count?unread.count.toString():""});
-			if (tmr) tmr.restart();
+			if (tmr && !fromTimer) tmr.restart();
 		}).catch(onError);
 }
