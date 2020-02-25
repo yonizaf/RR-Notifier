@@ -9,7 +9,9 @@ function createRow(listItem){
 
 document.getElementById("check-now").addEventListener("click",function(){reloadResults()} );
 document.getElementById("set-updated").addEventListener("click",function(){
-	browser.storage.sync.set({lastUpdated:(Date.now())})
+	browser.storage.local.get("lastCheck").then(result => {
+	browser.storage.sync.set({lastUpdated:result.lastCheck})
+	})
 } );
 document.getElementById("open-rr").addEventListener("click",function(){
 	browser.tabs.create({

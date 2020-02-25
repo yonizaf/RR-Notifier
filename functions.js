@@ -9,9 +9,9 @@ function toggleTitle(title) {
 }
 
 function onError(){
-	browser.browserAction.setIcon({path: "/icons/icon-red-32.png"}).then(
-	browser.browserAction.setBadgeBackgroundColor({color:"red"})).then(
-	browser.browserAction.setBadgeText({text:"E"}));
+	browser.browserAction.setIcon({path: "/icons/icon-red-32.png"})
+	browser.browserAction.setBadgeBackgroundColor({color:"red"})
+	browser.browserAction.setBadgeText({text:"E"});
 }
 
 function timeout(ms) {
@@ -21,10 +21,10 @@ function timeout(ms) {
 async function reloadResults(){
 	var lastUpdated;
 	
-	await browser.browserAction.setBadgeText({text: ""}).then(
-	browser.browserAction.setIcon({path: "/icons/icon-wait-32.png"})).then(
-	browser.storage.sync.get({lastUpdated:0}, result => {lastUpdated=result.lastUpdated})
-	);
+	browser.browserAction.setBadgeText({text: ""})
+	browser.browserAction.setIcon({path: "/icons/icon-wait-32.png"})
+	await browser.storage.sync.get({lastUpdated:0}, result => {lastUpdated=result.lastUpdated})
+	
 	//await timeout(3000);
 	fetch('https://www.royalroad.com/my/follows?listType=v2').then(function(response) {
 			return response.text();
@@ -48,6 +48,7 @@ async function reloadResults(){
 			unread.count = unread.list.length;
 			return unread;
 		}).then(function(unread) {
+			browser.storage.local.set({"lastCheck":Date.now()-msSecond})
 			browser.storage.local.set({"unread":unread})
 			browser.browserAction.setIcon({path: "/icons/icon-32.png"})
 			browser.browserAction.setBadgeBackgroundColor({color:"gold"})
