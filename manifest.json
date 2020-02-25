@@ -1,0 +1,36 @@
+{
+
+  "manifest_version": 2,
+  "name": "RRNotifier",
+  "version": "0.3",
+
+  "description": "Notify when new chapter in RoyalRoad Follow List",
+  
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "rrnotifier@yonizaf.com",
+      "strict_min_version": "57.0"
+    }
+  },
+  
+  "permissions": [
+    "*://www.royalroad.com/*",
+	"storage"
+  ],
+
+  "icons": {
+    "48": "/icons/icon-48.png",
+    "96": "/icons/icon-96.png"
+  },
+
+  "browser_action": {
+    "default_icon": "/icons/icon-grey-32.png",
+    "default_title": "RoyalRoad Notifier",
+    "default_popup": "/menu/menu.html"
+  },
+  
+	"background" : {
+		"scripts" : ["/functions.js","/background-script.js"]
+	}
+
+}
