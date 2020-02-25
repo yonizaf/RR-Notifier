@@ -30,7 +30,7 @@
   },
   
 	"background" : {
-		"scripts" : ["/functions.js","/background-script.js"]
+		"scripts" : ["/functions.js","/timer.js","/background-script.js"]
 	}
 
 }
