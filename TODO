@@ -10,6 +10,9 @@ TODO:
  
  
  
+### visual/superficial
+* decide if header with version should be centered 
+ 
 ### debugging related
 * add a setting / variable for debug mode
 	- add various messages (and edit current ones) to show only when debug flag is up

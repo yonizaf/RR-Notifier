@@ -21,8 +21,9 @@ function timeout(ms) {
 async function reloadResults(fromTimer){
 	var lastUpdated;
 	
-	browser.browserAction.setBadgeText({text: ""})
-	browser.browserAction.setIcon({path: "/icons/icon-wait-32.png"})
+	browser.browserAction.setIcon({path: "/icons/icon-grey-32.png"})
+	browser.browserAction.setBadgeBackgroundColor({color:"#00000000"})
+	browser.browserAction.setBadgeText({text: "⏳"});
 	await browser.storage.sync.get({lastUpdated:0}, result => {lastUpdated=result.lastUpdated})
 	
 	//await timeout(3000);
