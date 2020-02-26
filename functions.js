@@ -54,6 +54,9 @@ async function reloadResults(fromTimer){
 			browser.browserAction.setIcon({path: "/icons/icon-32.png"})
 			browser.browserAction.setBadgeBackgroundColor({color:"gold"})
 			browser.browserAction.setBadgeText({text: unread.count?unread.count.toString():""});
-			if (tmr && !fromTimer) tmr.restart();
+			if (tmr && !fromTimer) {
+				if (console && console.info) console.info("Manual check! Timer id is "+tmr.timerId+".\n Time: "+new Date());
+				tmr.restart();
+			}
 		}).catch(onError);
 }
