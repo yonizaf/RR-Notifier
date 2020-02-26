@@ -20,6 +20,7 @@ function timeout(ms) {
 
 async function reloadResults(fromTimer){
 	var lastUpdated;
+	var baseURL = "https://www.royalroad.com";
 	
 	browser.browserAction.setIcon({path: "/icons/icon-grey-32.png"})
 	browser.browserAction.setBadgeBackgroundColor({color:"#00000000"})
@@ -27,7 +28,7 @@ async function reloadResults(fromTimer){
 	await browser.storage.sync.get({lastUpdated:0}, result => {lastUpdated=result.lastUpdated})
 	
 	//await timeout(3000);
-	fetch('https://www.royalroad.com/my/follows?listType=v2').then(function(response) {
+	fetch(baseURL+'/my/follows?listType=v2').then(function(response) {
 			return response.text();
 		}).then(function(html) {
 			var parser = new DOMParser();
@@ -40,9 +41,18 @@ async function reloadResults(fromTimer){
 				let timestamp = new Date(time).getTime()
 				let isNew = (timestamp - lastUpdated) > 0;
 				if (isNew && row.querySelector(".fas.fa-circle")){
-					let listItem = {bookTitle:"",chapTitle:"",timeText:time,timestamp:timestamp}
+					let listItem = {
+						bookTitle:"",
+						chapTitle:"",
+						bookUrl:"",
+						chapUrl:"",
+						timeText:time,
+						timestamp:timestamp
+					}
 					listItem.bookTitle=row.querySelector(".fiction-title").textContent.trim();
 					listItem.chapTitle=row.querySelector(".list-item span").textContent.trim();
+					listItem.bookUrl=baseURL+row.querySelector(".fiction-title a").getAttribute("href");
+					listItem.chapUrl=baseURL+row.querySelector(".list-item a").getAttribute("href");
 					unread.list.push(listItem)
 				}
 			}
