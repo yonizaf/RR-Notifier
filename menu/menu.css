@@ -14,12 +14,13 @@ header{
 }
 #menu-content{
 	min-width:100px;
-	padding:2px;
+	/* padding:2px; */
 }
 .row{
 	background-color:#333;
 	padding:2px;
 	margin:4px 0;
+	background: linear-gradient(0deg, #333 30%, rgba(0,0,0,0) 100%);
 }
 .row img.link{
 	width:12px;
@@ -53,6 +54,9 @@ header{
 #unread-list>.button{
 	font-size:0.8em
 }
+#toolbar{
+	padding:0 3px;
+}
 #toolbar>.button{
 	height:24px;
 	width:24px;
@@ -71,7 +75,6 @@ header{
 	background-color:#3e3e3e;
 }
 .button:active{
-	/* background-color:#444; */
 	position:relative;
 	top:1px;
 	left:1px;
