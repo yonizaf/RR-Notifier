@@ -44,7 +44,7 @@ function updateTimeSince(){
 	browser.storage.local.get("lastCheck").then(result => {
 		var title = "Last check was " + timeAgo(result.lastCheck);
 		browser.storage.sync.get("lastUpdated").then(result => {
-			title += "\nOnly results since (" + timeAgo(result.lastUpdated,true) + ") are shown.";
+			if (result.lastUpdated) title += "\nOnly results since (" + timeAgo(result.lastUpdated,true) + ") are shown.";
 			document.getElementById("time-since").title=title;	
 		});
 	});
