@@ -14,7 +14,7 @@ function createRow(listItem){
 	bookLink.src = chapterLink.src = "../icons/external.svg";
 	bookLink.className = chapterLink.className = "link";
 	time.textContent=timeAgo(listItem.timestamp,true);
-	time.title=listItem.time;
+	time.title=listItem.timeText;
 	time.className="time";
 	//event handlers
 	bookLink.addEventListener("click",openTitleLink)
