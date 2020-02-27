@@ -4,11 +4,12 @@ TODO:
 	- update intervals (or disable auto check)
 * more accurate tooltips
 	- lastUpdate specifically
- 
+* add button to reset lastUpdate to 0. or a setting.
  
  
 ### visual/superficial
 * decide if header with version should be centered 
+* optimal font size?
  
 ### debugging related
 * add a setting / variable for debug mode

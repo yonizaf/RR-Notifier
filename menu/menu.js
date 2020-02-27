@@ -26,7 +26,7 @@ function createRow(listItem){
 	return row;
 }
 function timeAgo(time,biggerUnits){
-	const units = [{unit:"hour",value:msHour},{unit:"minute",value:msMinute},{unit:"second",value:msSecond}]
+	const units = [{unit:"day",value:msDay},{unit:"hour",value:msHour},{unit:"minute",value:msMinute},{unit:"second",value:msSecond}]
 	if (typeof(time)=="object") time=time.getTime();
 	let timeDiff = Date.now()-time;
 	let agoStr = "";
