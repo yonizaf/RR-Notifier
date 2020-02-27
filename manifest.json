@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "RRNotifier",
-  "version": "0.5.1",
+  "version": "0.5.2",
 
   "description": "Notify when new chapter in RoyalRoad Follow List",
   

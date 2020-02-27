@@ -18,6 +18,7 @@ function createRow(listItem){
 	time.className="time";
 	//event handlers
 	bookLink.addEventListener("click",openTitleLink)
+	chapterLink.addEventListener("click",openTitleLink)
 	//all appends in the end
 	chapter.append(chapterLink);
 	book.append(bookLink);
