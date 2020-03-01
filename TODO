@@ -5,11 +5,14 @@ TODO:
 * more accurate tooltips
 	- lastUpdate specifically
 * add button to reset lastUpdate to 0. or a setting.
+* Set lastUpdate should trigger something. window close? manual check? not sure.
+* Add lasr reas chapter in there somewhere (tooltip?)
  
  
 ### visual/superficial
 * decide if header with version should be centered 
 * optimal font size?
+* highest unit for 'ago' format? possibly setting
  
 ### debugging related
 * add a setting / variable for debug mode
