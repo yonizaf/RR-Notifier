@@ -61,14 +61,16 @@ async function reloadResults(fromTimer){
 			unread.count = unread.list.length;
 			return unread;
 		}).then(function(unread) {
-			browser.storage.local.set({"lastCheck":Date.now()-msSecond})
-			browser.storage.local.set({"unread":unread})
-			browser.browserAction.setIcon({path: "/icons/icon-32.png"})
-			browser.browserAction.setBadgeBackgroundColor({color:"gold"})
-			browser.browserAction.setBadgeText({text: unread.count?unread.count.toString():""});
-			if (tmr && !fromTimer) {
-				if (console && console.info) console.info("Manual check! Timer id is "+tmr.timerId+".\n Time: "+new Date());
-				tmr.restart();
-			}
+			return Promise.all([
+				browser.storage.local.set({"lastCheck":Date.now()-msSecond}),
+				browser.storage.local.set({"unread":unread}),
+				browser.browserAction.setIcon({path: "/icons/icon-32.png"}),
+				browser.browserAction.setBadgeBackgroundColor({color:"gold"}),
+				browser.browserAction.setBadgeText({text: unread.count?unread.count.toString():""})
+			])
 		}).catch(onError);
+	if (tmr && !fromTimer) {
+		if (console && console.info) console.info("Manual check! Timer id is "+tmr.timerId+".\n Time: "+new Date());
+		tmr.restart();
+	}
 }
