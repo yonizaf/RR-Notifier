@@ -74,7 +74,8 @@ document.getElementById("set-updated").addEventListener("click",function(){
 	browser.storage.local.get("lastCheck").then(result => {
 		return Promise.all ([
 			browser.storage.sync.set({lastUpdated:result.lastCheck}),
-			browser.storage.local.set({"unread":{count:0,list:[]}})
+			browser.storage.local.set({"unread":{count:0,list:[]}}),
+			browser.browserAction.setBadgeText({text: ""})
 		])
 	}).then(()=>{
 		window.close();
