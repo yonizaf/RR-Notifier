@@ -68,15 +68,21 @@ document.getElementById("version-info").textContent = browser.runtime.getManifes
 document.getElementById("check-now").addEventListener("click",function(){page.reloadResults()} );
 document.getElementById("set-updated").addEventListener("click",function(){
 	browser.storage.local.get("lastCheck").then(result => {
-	browser.storage.sync.set({lastUpdated:result.lastCheck})
-	})
+		return Promise.all ([
+			browser.storage.sync.set({lastUpdated:result.lastCheck}),
+			browser.storage.local.set({"unread":{count:0,list:[]}})
+		])
+	}).then(()=>{
+		window.close();
+	});
 } );
 document.getElementById("open-rr").addEventListener("click",function(){
 	browser.tabs.create({
     url:"https://www.royalroad.com/my/follows",
 	active:true
+  }).then(()=>{
+	  window.close();
   });
-  window.close();
 });
 
 browser.storage.local.get({"unread":{count:0,list:[]}}).then((result=>{
