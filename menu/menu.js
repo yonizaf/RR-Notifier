@@ -65,7 +65,11 @@ var page = browser.extension.getBackgroundPage();
 
 document.getElementById("version-info").textContent = browser.runtime.getManifest().version;
 
-document.getElementById("check-now").addEventListener("click",function(){page.reloadResults()} );
+document.getElementById("check-now").addEventListener("click",function(){
+	page.reloadResults().then(()=>{
+		populateList();
+	})
+});
 document.getElementById("set-updated").addEventListener("click",function(){
 	browser.storage.local.get("lastCheck").then(result => {
 		return Promise.all ([
@@ -85,13 +89,14 @@ document.getElementById("open-rr").addEventListener("click",function(){
   });
 });
 
-browser.storage.local.get({"unread":{count:0,list:[]}}).then((result=>{
-	let unread=result.unread;
-	if (!unread.count) return;
-	let rows = unread.list.map(createRow)
-	document.getElementById("unread-list").append(...rows);
-	//for (let i =0; i < unread.list.length;i++){
-	//	createRow(unread.list[i])
-	//}
-}));
+function populateList(){
+	document.querySelectorAll("#unread-list>.row").forEach(row=>row.remove());
+	browser.storage.local.get({"unread":{count:0,list:[]}}).then((result=>{
+		let unread=result.unread;
+		if (!unread.count) return;
+		let rows = unread.list.map(createRow)
+		document.getElementById("unread-list").append(...rows);
+	}));
+}
+populateList();
 /**/
