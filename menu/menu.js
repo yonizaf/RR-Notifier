@@ -9,6 +9,7 @@ function createRow(listItem){
 	row.className="row";
 	book.textContent=listItem.bookTitle;
 	chapter.textContent=listItem.chapTitle;
+	chapter.title="Last Read: " + listItem.lastReadTitle;
 	bookLink.title=listItem.bookUrl;
 	chapterLink.title=listItem.chapUrl;
 	bookLink.src = chapterLink.src = "../icons/external.svg";

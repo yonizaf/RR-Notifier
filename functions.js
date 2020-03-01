@@ -44,6 +44,7 @@ async function reloadResults(fromTimer){
 					let listItem = {
 						bookTitle:"",
 						chapTitle:"",
+						lastReadTitle:"",
 						bookUrl:"",
 						chapUrl:"",
 						timeText:time,
@@ -51,6 +52,7 @@ async function reloadResults(fromTimer){
 					}
 					listItem.bookTitle=row.querySelector(".fiction-title").textContent.trim();
 					listItem.chapTitle=row.querySelector(".list-item span").textContent.trim();
+					listItem.lastReadTitle=row.querySelector(".list-item:nth-of-type(2) span").textContent.trim();
 					listItem.bookUrl=baseURL+row.querySelector(".fiction-title a").getAttribute("href");
 					listItem.chapUrl=baseURL+row.querySelector(".list-item a").getAttribute("href");
 					unread.list.push(listItem)
