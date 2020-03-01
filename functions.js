@@ -28,7 +28,7 @@ async function reloadResults(fromTimer){
 	await browser.storage.sync.get({lastUpdated:0}, result => {lastUpdated=result.lastUpdated})
 	
 	//await timeout(3000);
-	fetch(baseURL+'/my/follows?listType=v2').then(function(response) {
+	await fetch(baseURL+'/my/follows?listType=v2').then(function(response) {
 			return response.text();
 		}).then(function(html) {
 			var parser = new DOMParser();
