@@ -4,8 +4,9 @@ TODO:
 	- update intervals (or disable auto check)
 * more accurate tooltips
 	- lastUpdate specifically
+	- tooltip of main icon should show current status, or errors when applicable.
 * add button to reset lastUpdate to 0. or a setting.
-* Set lastUpdate should trigger something. window close? manual check? not sure.
+
  
  
 ### visual/superficial

@@ -4,7 +4,7 @@
   "name": "RRNotifier",
   "version": "0.6.0",
 
-  "description": "Notify when new chapter in RoyalRoad Follow List",
+  "description": "Notify when there are new chapter in your RoyalRoad Follow List",
   
   "browser_specific_settings": {
     "gecko": {
