@@ -8,7 +8,7 @@ TODO:
 * add button to reset lastUpdate to 0. or a setting.
 * make sure to show error (red icon) when not logged in
 * add a style for light theme as well 
-
+* take dpi settings (window.devicePixelRatio) into account
  
  
 ### visual/superficial
