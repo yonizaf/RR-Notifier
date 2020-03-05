@@ -45,8 +45,8 @@ function timeAgo(time,biggerUnits){
 function updateTimeSince(){
 	browser.storage.local.get("lastCheck").then(result => {
 		var title = "Last check was " + timeAgo(result.lastCheck);
-		browser.storage.sync.get("lastUpdated").then(result => {
-			if (result.lastUpdated) title += "\nOnly results since (" + timeAgo(result.lastUpdated,true) + ") are shown.";
+		browser.storage.sync.get("hideBefore").then(result => {
+			if (result.hideBefore) title += "\nOnly results since (" + timeAgo(result.hideBefore,true) + ") are shown.";
 			document.getElementById("time-since").title=title;	
 		});
 	});
@@ -73,7 +73,7 @@ document.getElementById("check-now").addEventListener("click",function(){
 document.getElementById("set-updated").addEventListener("click",function(){
 	browser.storage.local.get("lastCheck").then(result => {
 		return Promise.all ([
-			browser.storage.sync.set({lastUpdated:result.lastCheck}),
+			browser.storage.sync.set({hideBefore:result.lastCheck}),
 			browser.storage.local.set({"unread":{count:0,list:[]}}),
 			browser.browserAction.setBadgeText({text: ""})
 		])

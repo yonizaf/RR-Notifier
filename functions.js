@@ -1,8 +1,8 @@
 const msSecond = 1000, msMinute = msSecond*60, msHour=msMinute*60,msDay=msHour*24,msWeek=msDay*7,msMonth=msDay*30;
 
 
-function showHidden (showAll) {// --- temporary debug function until option is added to reset lastUpdated --- //
-	browser.storage.sync.set({lastUpdated:showAll?0:Date.now()-msDay*30});
+function showHidden (showAll) {// --- temporary debug function until option is added to reset hideBefore --- //
+	browser.storage.sync.set({hideBefore:showAll?0:Date.now()-msDay*30});
 	reloadResults();
 }
 
@@ -17,13 +17,13 @@ function timeout(ms) {
 }
 
 async function reloadResults(fromTimer){
-	var lastUpdated;
+	var hideBefore;
 	var baseURL = "https://www.royalroad.com";
 	
 	browser.browserAction.setIcon({path: "/icons/icon-grey-32.png"})
 	browser.browserAction.setBadgeBackgroundColor({color:"#00000000"})
 	browser.browserAction.setBadgeText({text: "⏳"});
-	await browser.storage.sync.get({lastUpdated:0}, result => {lastUpdated=result.lastUpdated})
+	await browser.storage.sync.get({hideBefore:0}, result => {hideBefore=result.hideBefore})
 	
 	//await timeout(3000);
 	await fetch(baseURL+'/my/follows?listType=v2').then(function(response) {
@@ -37,7 +37,7 @@ async function reloadResults(fromTimer){
 				let row = rows[i];
 				let time = row.querySelector("time").title + " GMT";
 				let timestamp = new Date(time).getTime()
-				let isNew = (timestamp - lastUpdated) > 0;
+				let isNew = (timestamp - hideBefore) > 0;
 				if (isNew && row.querySelector(".fas.fa-circle")){
 					let listItem = {
 						bookTitle:"",
