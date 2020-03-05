@@ -1,11 +1,9 @@
 const msSecond = 1000, msMinute = msSecond*60, msHour=msMinute*60,msDay=msHour*24,msWeek=msDay*7,msMonth=msDay*30;
 
-function toggleTitle(title) {
-  if (title == "this") {
-    browser.browserAction.setTitle({title: "that"});
-  } else {
-    browser.browserAction.setTitle({title: "this"});
-  }
+
+function showHidden (showAll) {// --- temporary debug function until option is added to reset lastUpdated --- //
+	browser.storage.sync.set({lastUpdated:showAll?0:Date.now()-msDay*30});
+	reloadResults();
 }
 
 function onError(){
