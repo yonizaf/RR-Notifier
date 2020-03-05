@@ -7,6 +7,7 @@ TODO:
 	- tooltip of main icon should show current status, or errors when applicable.
 * add button to reset lastUpdate to 0. or a setting.
 * make sure to show error (red icon) when not logged in
+* add a style for light theme as well 
 
  
  

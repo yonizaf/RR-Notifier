@@ -1,5 +1,5 @@
 body{
-	background-color:#505050;
+	background-color:#4A4A4F;
 	color:#eee;
 	font-family:"segoe ui";
 	font-size:11px;
@@ -36,6 +36,8 @@ header{
 	margin:4px 1px;
 	background-color:#333;
 	cursor:pointer;
+	border-radius:3px;
+	border:1px solid #222;
 }
 #unread-list{
 	min-height:30px;
@@ -71,15 +73,17 @@ header{
 	background-position:center;
 }
 .button:hover{
-	background-color:#3e3e3e;
+	background-color:#5C5C61;
 }
 .button:active{
+	background-color:#646469;
 	position:relative;
 	top:1px;
 	left:1px;
 }
 #time-since{
 	float:right;
+	margin-right:4px;
 }
 .hidden{
 	display:none;
