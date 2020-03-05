@@ -22,11 +22,10 @@ header{
 	margin:4px 0;
 	background: linear-gradient(0deg, #333 30%, rgba(0,0,0,0) 100%);
 }
-.row img.link{
-	width:12px;
-	vertical-align:middle;
+.row span.link{
 	margin-left:4px;
 	cursor:pointer;
+	color:#7af
 }
 .row .time{
 	text-align:right;
@@ -34,7 +33,6 @@ header{
 	font-size:10px;
 }
 .button{
-	padding:2px;
 	margin:4px 1px;
 	background-color:#333;
 	cursor:pointer;
@@ -61,9 +59,10 @@ header{
 	height:24px;
 	width:24px;
 	display:inline-block;
-	font-size:18px;
+	font-size:17px;
 	vertical-align:middle;
 	text-align:center;
+	padding:4px 2px 0;
 }
 #open-rr{
 	background-image:url(../icons/icon-32.png);

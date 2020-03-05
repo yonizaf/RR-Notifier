@@ -1,0 +1,29 @@
+/*!
+ * Font Awesome Free 5.12.1 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: auto;
+  src: url("fa-solid-900-subset.woff2") format("woff2"); }
+
+.fa,
+.fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900; }
+
+  
+  /*
+  font is a subset made using FontSquirrel.
+  
+  Code	js		css		html		Shape
+  F013	\uF013	\F013	&#xF013;	Cog (Settings)
+  F021	\uF021	\F021	&#xF021;	Sync
+  F2F1	\uF2F1	\F2F1	&#xF2F1;	Sync Alt
+  F00C	\uF00C	\F00C	&#xF00C;	Check Mark
+  F35D	\uF35D	\F35D	&#xF35D;	External Link Alt
+  F360	\uF360	\F360	&#xF360;	External Link Square Alt
+  
+  */
