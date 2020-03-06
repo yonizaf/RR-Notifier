@@ -6,10 +6,11 @@ function showHidden (showAll) {// --- temporary debug function until option is a
 	reloadResults();
 }
 
-function onError(){
+function onError(e){
 	browser.browserAction.setIcon({path: "/icons/icon-red-32.png"})
 	browser.browserAction.setBadgeBackgroundColor({color:"red"})
-	browser.browserAction.setBadgeText({text:"E"});
+	browser.browserAction.setBadgeText({text:e.message?e.message[0]:"E"});
+	console.error(e.message?e.message:e);
 }
 
 function timeout(ms) {
@@ -32,6 +33,9 @@ async function reloadResults(fromTimer){
 			var parser = new DOMParser();
 			var doc = parser.parseFromString(html, "text/html");
 			var unread = {count:0,list:[]};
+			if (doc.body.className == "login"){
+				return Promise.reject(new Error('Login Required'))
+			}
 			var rows = doc.querySelectorAll("#result>.fiction-list-item.row")
 			for (let i = 0; i<rows.length;i++){
 				let row = rows[i];
