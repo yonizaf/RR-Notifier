@@ -24,8 +24,10 @@ function createRow(listItem){
 	if (listItem.error){
 		row.className="error";
 		book.textContent=listItem.error;
-		bookLink.title="https://www.royalroad.com/account/login?ReturnUrl=%2Fmy%2Ffollows";
-		book.append(bookLink);
+		if (listItem.error == "Login Required"){
+			bookLink.title="https://www.royalroad.com/account/login?ReturnUrl=%2Fmy%2Ffollows";
+			book.append(bookLink);
+		}
 		row.append(book);
 		return row;	
 	}
