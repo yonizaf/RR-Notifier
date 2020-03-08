@@ -7,10 +7,12 @@ function showHidden (showAll) {// --- temporary debug function until option is a
 }
 
 function onError(e){
+	let errorText = e.message || e;
 	browser.browserAction.setIcon({path: "/icons/icon-red-32.png"})
+	browser.browserAction.setTitle({title: "Error: "+errorText});
 	browser.browserAction.setBadgeBackgroundColor({color:"red"})
 	browser.browserAction.setBadgeText({text:e.message?e.message[0]:"E"});
-	console.error(e.message?e.message:e);
+	console.error(errorText);
 }
 
 function timeout(ms) {
@@ -68,6 +70,7 @@ async function reloadResults(fromTimer){
 				browser.storage.local.set({"unread":unread}),
 				browser.browserAction.setIcon({path: "/icons/icon-32.png"}),
 				browser.browserAction.setBadgeBackgroundColor({color:"gold"}),
+				browser.browserAction.setTitle({title: unread.count+" fictions with unread chapters"}),
 				browser.browserAction.setBadgeText({text: unread.count?unread.count.toString():""})
 			])
 		}).catch(onError);
