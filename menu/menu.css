@@ -24,7 +24,7 @@ header{
 	margin:4px 0;
 	background: linear-gradient(0deg, #333 30%, rgba(0,0,0,0) 100%);
 }
-.row span.link{
+.row span.link,.error span.link{
 	margin-left:0.4rem;
 	cursor:pointer;
 	color:#7af
@@ -33,6 +33,12 @@ header{
 	text-align:right;
 	font-weight:bold;
 	font-size:0.9rem;
+}
+.error{
+	text-align:center;
+	color:#f88;
+	padding:7px;
+	font-weight: bold;
 }
 .button{
 	margin:4px 1px;

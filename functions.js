@@ -8,6 +8,8 @@ function showHidden (showAll) {// --- temporary debug function until option is a
 
 function onError(e){
 	let errorText = e.message || e;
+	let unread = {count:-1,list:[{error:errorText}]};
+	browser.storage.local.set({"unread":unread});
 	browser.browserAction.setIcon({path: "/icons/icon-red-32.png"})
 	browser.browserAction.setTitle({title: "Error: "+errorText});
 	browser.browserAction.setBadgeBackgroundColor({color:"red"})

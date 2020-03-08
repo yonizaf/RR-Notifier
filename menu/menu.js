@@ -20,6 +20,15 @@ function createRow(listItem){
 	//event handlers
 	bookLink.addEventListener("click",openTitleLink)
 	chapterLink.addEventListener("click",openTitleLink)
+	//if error message, style differently
+	if (listItem.error){
+		row.className="error";
+		book.textContent=listItem.error;
+		bookLink.title="https://www.royalroad.com/account/login?ReturnUrl=%2Fmy%2Ffollows";
+		book.append(bookLink);
+		row.append(book);
+		return row;	
+	}
 	//all appends in the end
 	chapter.append(chapterLink);
 	book.append(bookLink);
