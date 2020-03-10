@@ -10,6 +10,9 @@ TODO:
 	- add message and link to dropdown menu
 * add a style for light theme as well 
 * take dpi settings (window.devicePixelRatio) into account
+* replace setTimout with alarm api
+* add optional notification
+* possibly delay timer when workstation is locked
  
  
 ### visual/superficial
