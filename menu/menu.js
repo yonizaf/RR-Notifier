@@ -102,8 +102,8 @@ document.getElementById("open-rr").addEventListener("click",function(){
 });
 
 function populateList(){
-	document.querySelectorAll("#unread-list>.row").forEach(row=>row.remove());
 	browser.storage.local.get({"unread":{count:0,list:[]}}).then((result=>{
+		document.querySelectorAll("#unread-list>.row").forEach(row=>row.remove());
 		let unread=result.unread;
 		if (!unread.count) return;
 		let rows = unread.list.map(createRow)
