@@ -58,7 +58,8 @@ async function reloadResults(fromTimer){
 					}
 					listItem.bookTitle=row.querySelector(".fiction-title").textContent.trim();
 					listItem.chapTitle=row.querySelector(".list-item span").textContent.trim();
-					listItem.lastReadTitle=row.querySelector(".list-item:nth-of-type(2) span").textContent.trim();
+					let lastReadTitle = row.querySelector(".list-item:nth-of-type(2) span"); // apparenty it might be missing if the chapter was deleted
+					listItem.lastReadTitle=lastReadTitle?lastReadTitle.textContent.trim():"Unknown";
 					listItem.bookUrl=baseURL+row.querySelector(".fiction-title a").getAttribute("href");
 					listItem.chapUrl=baseURL+row.querySelector(".list-item a").getAttribute("href");
 					unread.list.push(listItem)
