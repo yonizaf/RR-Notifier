@@ -28,7 +28,7 @@ function createRow(listItem){
 	time.title=listItem.timeText;
 	time.className="time";
 	//common link actions
-	allLinks = [bookLink,chapterLink,nextLink,lastLink];
+	allLinks = [bookLink,lastLink,nextLink,chapterLink];
 	allLinks.forEach(link => {
 		link.addEventListener("click",openTitleLink);
 		link.className = "button";
