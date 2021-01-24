@@ -61,6 +61,9 @@ header{
 }
 #toolbar{
 	padding:0 3px;
+	position: sticky;
+	bottom:0px;
+	background-color:#4A4A4F;
 }
 #toolbar>.button{
 	box-sizing:border-box;
