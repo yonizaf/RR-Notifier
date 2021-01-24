@@ -2,29 +2,44 @@ const msSecond = 1000, msMinute = msSecond*60, msHour=msMinute*60,msDay=msHour*2
 function createRow(listItem){
 	let row = document.createElement("div");
 	let book = document.createElement("div");
-	let bookLink = document.createElement("span");
+	let bookLink = document.createElement("div");
 	let chapter = document.createElement("div");
-	let chapterLink = document.createElement("span");
+	let lastLink = document.createElement("div");
+	let nextLink = document.createElement("div");
+	let chapterLink = document.createElement("div");
 	let time = document.createElement("div");
+	let links = document.createElement("div");
+	let linkIcon = document.createElement("span");
 	row.className="row";
 	book.textContent=listItem.bookTitle;
 	chapter.textContent=listItem.chapTitle;
 	chapter.title="Last Read: " + listItem.lastReadTitle;
 	bookLink.title=listItem.bookUrl;
+	bookLink.textContent = "Fiction";
 	chapterLink.title=listItem.chapUrl;
-	bookLink.textContent = chapterLink.textContent = "\uF35D"; // alternative: \uF360
-	bookLink.className = chapterLink.className = "link fas";
+	chapterLink.textContent = "Newest"; // alternative: \uF360
+	lastLink.title=listItem.lastReadLink;
+	lastLink.textContent="Last";
+	nextLink.title=listItem.nextUrl;
+	nextLink.textContent="Next";
+	linkIcon.textContent = "\uF35D"; // alternative: \uF360
+	linkIcon.className = "link fas";
 	time.textContent=timeAgo(listItem.timestamp,true);
 	time.title=listItem.timeText;
 	time.className="time";
-	//event handlers
-	bookLink.addEventListener("click",openTitleLink)
-	chapterLink.addEventListener("click",openTitleLink)
+	//common link actions
+	allLinks = [bookLink,chapterLink,nextLink,lastLink];
+	allLinks.forEach(link => {
+		link.addEventListener("click",openTitleLink);
+		link.className = "button";
+		link.append(linkIcon.cloneNode(true))
+	})
 	//if error message, style differently
 	if (listItem.error){
 		row.className="error";
 		book.textContent=listItem.error;
 		if (listItem.error == "Login Required"){
+			bookLink.textContent="Login";
 			bookLink.title="https://www.royalroad.com/account/login?ReturnUrl=%2Fmy%2Ffollows";
 			book.append(bookLink);
 		}
@@ -32,9 +47,8 @@ function createRow(listItem){
 		return row;	
 	}
 	//all appends in the end
-	chapter.append(chapterLink);
-	book.append(bookLink);
-	row.append(book,chapter,time)
+	links.append(...allLinks)
+	row.append(book,chapter,links,time)
 	return row;
 }
 function timeAgo(time,biggerUnits){

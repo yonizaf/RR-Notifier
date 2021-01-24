@@ -48,20 +48,27 @@ async function reloadResults(fromTimer){
 				let isNew = (timestamp - hideBefore) > 0;
 				if (isNew && row.querySelector(".fas.fa-circle")){
 					let listItem = {
+						bookId:"",
 						bookTitle:"",
 						chapTitle:"",
 						lastReadTitle:"",
+						lastReadLink:"",
 						bookUrl:"",
 						chapUrl:"",
+						nextUrl:"",
 						timeText:time,
 						timestamp:timestamp
 					}
 					listItem.bookTitle=row.querySelector(".fiction-title").textContent.trim();
 					listItem.chapTitle=row.querySelector(".list-item span").textContent.trim();
-					let lastReadTitle = row.querySelector(".list-item:nth-of-type(2) span"); // apparenty it might be missing if the chapter was deleted
-					listItem.lastReadTitle=lastReadTitle?lastReadTitle.textContent.trim():"Unknown";
+					let lastReadTitle = row.querySelector(".list-item:nth-of-type(2) a"); // apparenty it might be missing if the chapter was deleted
+					listItem.lastReadTitle=lastReadTitle?lastReadTitle.querySelector("span").textContent.trim():"Unknown";
+					listItem.lastReadLink=lastReadTitle?lastReadTitle.getAttribute("href"):"";
 					listItem.bookUrl=baseURL+row.querySelector(".fiction-title a").getAttribute("href");
 					listItem.chapUrl=baseURL+row.querySelector(".list-item a").getAttribute("href");
+					listItem.bookId=listItem.bookUrl.match(/\/([0-9]+)\//)[1]
+					listItem.nextUrl=`${baseURL}/chapter/next/${listItem.bookId}`;
+					
 					unread.list.push(listItem)
 				}
 			}
