@@ -33,6 +33,11 @@ header{
 	padding: 1px 5px 2px;
 	display: inline-block;
 }
+.row div{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 .row .time{
 	text-align:right;
 	font-weight:bold;

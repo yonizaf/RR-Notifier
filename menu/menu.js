@@ -11,7 +11,7 @@ function createRow(listItem){
 	let links = document.createElement("div");
 	let linkIcon = document.createElement("span");
 	row.className="row";
-	book.textContent=listItem.bookTitle;
+	book.textContent = book.title = listItem.bookTitle;
 	chapter.textContent=listItem.chapTitle;
 	chapter.title="Last Read: " + listItem.lastReadTitle;
 	bookLink.title=listItem.bookUrl;
