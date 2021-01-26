@@ -106,3 +106,6 @@ header{
 .hidden{
 	display:none;
 }
+.row .button.hidden{
+	visibility: hidden;
+}

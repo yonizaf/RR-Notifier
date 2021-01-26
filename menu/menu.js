@@ -31,7 +31,8 @@ function createRow(listItem){
 	allLinks = [bookLink,lastLink,nextLink,chapterLink];
 	allLinks.forEach(link => {
 		link.addEventListener("click",openTitleLink);
-		link.className = "button";
+		link.classList.add ("button");
+		if (!link.title) link.classList.add("hidden")
 		link.append(linkIcon.cloneNode(true))
 	})
 	//if error message, style differently
