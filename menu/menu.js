@@ -79,7 +79,7 @@ function updateTimeSince(){
 }
 function openTitleLink(e){
 	browser.tabs.create({
-		url:e.target.title,
+		url:e.currentTarget.title,
 		active:true
 	  });
 	window.close();
