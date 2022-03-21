@@ -43,7 +43,7 @@ async function reloadResults(fromTimer){
 			var rows = doc.querySelectorAll("#result>.fiction-list-item.row")
 			for (let i = 0; i<rows.length;i++){
 				let row = rows[i];
-				let time = row.querySelector("time").title + " GMT";
+				let time = row.querySelector("time").title.replace('nn','') + " GMT";
 				let timestamp = new Date(time).getTime()
 				let isNew = (timestamp - hideBefore) > 0;
 				if (isNew && row.querySelector(".fas.fa-circle")){
