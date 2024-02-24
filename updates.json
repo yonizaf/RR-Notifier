@@ -1,0 +1,12 @@
+{
+  "addons": {
+    "rrnotifier@yonizaf.com": {
+      "updates": [
+        {
+          "version": "0.7.7",
+          "update_link": "https://github.com/yonizaf/RR-Notifier/releases/download/v0.7.7/rrnotifier-0.7.7-fx.xpi"
+        }
+      ]
+    }
+  }
+}
