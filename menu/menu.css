@@ -100,8 +100,8 @@ header{
 	left:1px;
 }
 #time-since{
-	float:right;
-	margin-right:4px;
+	float:left;
+	margin-left:4px;
 }
 .hidden{
 	display:none;
