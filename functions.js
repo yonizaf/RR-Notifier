@@ -43,8 +43,8 @@ async function reloadResults(fromTimer){
 			var rows = doc.querySelectorAll("#result>.fiction-list-item.row")
 			for (let i = 0; i<rows.length;i++){
 				let row = rows[i];
-				let time = row.querySelector("time").dateTime;
-				let timestamp = new Date(time+"Z").getTime()
+				let time = row.querySelector("time");
+				let timestamp = new Date(time.dateTime+"Z").getTime()
 				let isNew = (timestamp - hideBefore) > 0;
 				if (isNew && row.querySelector(".fas.fa-circle")){
 					let listItem = {
@@ -56,7 +56,7 @@ async function reloadResults(fromTimer){
 						bookUrl:"",
 						chapUrl:"",
 						nextUrl:"",
-						timeText:time,
+						timeText:time.title + " GMT", // */ time.dateTime.replace("T"," ").substring(0,16) + " GMT",
 						timestamp:timestamp
 					}
 					listItem.bookTitle=row.querySelector(".fiction-title").textContent.trim();
