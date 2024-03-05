@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "RRNotifier",
-  "version": "0.7.9",
+  "version": "0.7.10",
   "homepage_url": "https://github.com/yonizaf/RR-Notifier",
 
   "description": "Notify when there are new chapter in your RoyalRoad Follow List",
