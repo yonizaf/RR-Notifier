@@ -37,7 +37,7 @@ async function reloadResults(fromTimer){
 			var parser = new DOMParser();
 			var doc = parser.parseFromString(html, "text/html");
 			var unread = {count:0,list:[]};
-			if (doc.body.className == "login"){
+			if (doc.body.className == "login-page"){
 				return Promise.reject(new Error('Login Required'))
 			}
 			var rows = doc.querySelectorAll("#result>.fiction-list-item.row")
