@@ -40,13 +40,13 @@ async function reloadResults(fromTimer){
 			if (doc.body.className == "login-page"){
 				return Promise.reject(new Error('Login Required'))
 			}
-			var rows = doc.querySelectorAll("#result>.fiction-list-item.row")
+			var rows = doc.querySelectorAll(".fiction-list>div>.follow-update-card")
 			for (let i = 0; i<rows.length;i++){
 				let row = rows[i];
 				let time = row.querySelector("time");
-				let timestamp = new Date(time.dateTime+"Z").getTime()
+				let timestamp = new Date(time.dateTime).getTime()
 				let isNew = (timestamp - hideBefore) > 0;
-				if (isNew && row.querySelector(".fas.fa-circle")){
+				if (isNew && row.querySelector("[data-rr-tooltip]")){
 					let listItem = {
 						bookId:"",
 						bookTitle:"",
@@ -59,13 +59,13 @@ async function reloadResults(fromTimer){
 						timeText:time.title + " GMT", // */ time.dateTime.replace("T"," ").substring(0,16) + " GMT",
 						timestamp:timestamp
 					}
-					listItem.bookTitle=row.querySelector(".fiction-title").textContent.trim();
-					listItem.chapTitle=row.querySelector(".list-item span").textContent.trim();
-					let lastReadTitle = row.querySelector(".list-item:nth-of-type(2) a"); // apparenty it might be missing if the chapter was deleted
+					listItem.bookTitle=row.querySelector("ul>li a").textContent.trim();
+					listItem.chapTitle=row.querySelector("ul>li>a>span").textContent.trim();
+					let lastReadTitle = row.querySelector("li:nth-of-type(3)>a"); // apparenty it might be missing if the chapter was deleted
 					listItem.lastReadTitle=lastReadTitle?lastReadTitle.querySelector("span").textContent.trim():"Unknown";
 					listItem.lastReadLink=lastReadTitle?baseURL+lastReadTitle.getAttribute("href"):"";
-					listItem.bookUrl=baseURL+row.querySelector(".fiction-title a").getAttribute("href");
-					listItem.chapUrl=baseURL+row.querySelector(".list-item a").getAttribute("href");
+					listItem.bookUrl=baseURL+row.querySelector("ul>li a").getAttribute("href");
+					listItem.chapUrl=baseURL+row.querySelector("ul>li>a").getAttribute("href");
 					listItem.bookId=listItem.bookUrl.match(/\/([0-9]+)\//)[1]
 					listItem.nextUrl=`${baseURL}/chapter/next/${listItem.bookId}`;
 					
