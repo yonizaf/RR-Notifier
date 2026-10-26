@@ -61,9 +61,10 @@ async function reloadResults(fromTimer){
 					}
 					listItem.bookTitle=row.querySelector("ul>li a").textContent.trim();
 					listItem.chapTitle=row.querySelector("ul>li>a>span").textContent.trim();
-					let lastReadTitle = row.querySelector("li:nth-of-type(3)>a"); // apparenty it might be missing if the chapter was deleted
-					listItem.lastReadTitle=lastReadTitle?lastReadTitle.querySelector("span").textContent.trim():"Unknown";
-					listItem.lastReadLink=lastReadTitle?baseURL+lastReadTitle.getAttribute("href"):"";
+					let lastReadTitleLink = row.querySelector("li:nth-of-type(3)>a"); // apparenty it might be missing if the chapter was deleted
+					let lastReadTitle = row.querySelector("li:nth-of-type(3) .flex-1");
+					listItem.lastReadTitle=lastReadTitle?(lastReadTitleLink?"":"[DELETED] ")+lastReadTitle.textContent.trim():"Unknown";
+					listItem.lastReadLink=lastReadTitleLink?baseURL+lastReadTitleLink.getAttribute("href"):"";
 					listItem.bookUrl=baseURL+row.querySelector("ul>li a").getAttribute("href");
 					listItem.chapUrl=baseURL+row.querySelector("ul>li>a").getAttribute("href");
 					listItem.bookId=listItem.bookUrl.match(/\/([0-9]+)\//)[1]
