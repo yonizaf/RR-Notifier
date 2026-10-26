@@ -25,6 +25,10 @@
         {
           "version": "0.8.0",
           "update_link": "https://github.com/yonizaf/RR-Notifier/releases/download/v0.8.0/rrnotifier-0.8.0.xpi"
+        },
+        {
+          "version": "0.8.1",
+          "update_link": "https://github.com/yonizaf/RR-Notifier/releases/download/v0.8.1/rrnotifier-0.8.1.xpi"
         }
       ]
     }
